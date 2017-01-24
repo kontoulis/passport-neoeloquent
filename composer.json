@@ -39,7 +39,7 @@
     },
     "autoload": {
         "psr-4": {
-            "NeoEloquevt\\Passport\\": "src/"
+            "NeoEloquent\\Passport\\": "src/"
         }
     },
     "extra": {
