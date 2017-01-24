@@ -27,6 +27,6 @@ class PersonalAccessClient extends Model
      */
     public function client()
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(Client::class,'HAS_PERSONAL_ACCESS_CLIENT');
     }
 }

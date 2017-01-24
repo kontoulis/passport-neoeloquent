@@ -61,7 +61,7 @@ class Token extends Model
      */
     public function client()
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(Client::class, 'HAS_TOKEN');
     }
 
     /**
@@ -71,7 +71,7 @@ class Token extends Model
      */
     public function user()
     {
-        return $this->belongsTo(config('auth.providers.users.model'));
+        return $this->belongsTo(config('auth.providers.users.model'),'HAS_TOKEN');
     }
 
     /**

@@ -47,7 +47,7 @@ class Client extends Model
      */
     public function authCodes()
     {
-        return $this->hasMany(AuthCode::class);
+        return $this->hasMany(AuthCode::class, 'HAS_AUTH_CODE');
     }
 
     /**
@@ -57,7 +57,7 @@ class Client extends Model
      */
     public function tokens()
     {
-        return $this->hasMany(Token::class);
+        return $this->hasMany(Token::class,'HAS_TOKEN');
     }
 
     /**

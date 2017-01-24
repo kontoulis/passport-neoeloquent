@@ -20,7 +20,7 @@ trait HasApiTokens
      */
     public function clients()
     {
-        return $this->hasMany(Client::class);
+        return $this->hasMany(Client::class, 'HAS_CLIENT');
     }
 
     /**
@@ -30,7 +30,7 @@ trait HasApiTokens
      */
     public function tokens()
     {
-        return $this->hasMany(Token::class)->orderBy('created_at', 'desc');
+        return $this->hasMany(Token::class,'HAS_TOKEN')->orderBy('created_at', 'desc');
     }
 
     /**
