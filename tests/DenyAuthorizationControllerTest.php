@@ -13,7 +13,7 @@ class DenyAuthorizationControllerTest extends PHPUnit_Framework_TestCase
     {
         $response = Mockery::mock(ResponseFactory::class);
 
-        $controller = new Laravel\Passport\Http\Controllers\DenyAuthorizationController($response);
+        $controller = new NeoEloquent\Passport\Http\Controllers\DenyAuthorizationController($response);
 
         $request = Mockery::mock('Illuminate\Http\Request');
 

@@ -30,12 +30,12 @@ class BridgeAccessTokenRepositoryTest extends PHPUnit_Framework_TestCase
 
         $events->shouldReceive('fire')->once();
 
-        $accessToken = new Laravel\Passport\Bridge\AccessToken(2, [new Laravel\Passport\Bridge\Scope('scopes')]);
+        $accessToken = new NeoEloquent\Passport\Bridge\AccessToken(2, [new NeoEloquent\Passport\Bridge\Scope('scopes')]);
         $accessToken->setIdentifier(1);
         $accessToken->setExpiryDateTime($expiration);
-        $accessToken->setClient(new Laravel\Passport\Bridge\Client('client-id', 'name', 'redirect'));
+        $accessToken->setClient(new NeoEloquent\Passport\Bridge\Client('client-id', 'name', 'redirect'));
 
-        $repository = new Laravel\Passport\Bridge\AccessTokenRepository($database, $events);
+        $repository = new NeoEloquent\Passport\Bridge\AccessTokenRepository($database, $events);
 
         $repository->persistNewAccessToken($accessToken);
     }

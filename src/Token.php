@@ -1,8 +1,8 @@
 <?php
 
-namespace Laravel\Passport;
+namespace NeoEloquent\Passport;
 
-use Illuminate\Database\Eloquent\Model;
+use Vinelab\NeoEloquent\Eloquent\Model;
 
 class Token extends Model
 {
@@ -13,6 +13,7 @@ class Token extends Model
      */
     protected $table = 'oauth_access_tokens';
 
+    protected $primaryKey = 'uuid';
     /**
      * Indicates if the IDs are auto-incrementing.
      *

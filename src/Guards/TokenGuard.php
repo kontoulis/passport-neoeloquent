@@ -1,16 +1,16 @@
 <?php
 
-namespace Laravel\Passport\Guards;
+namespace NeoEloquent\Passport\Guards;
 
 use Exception;
 use Firebase\JWT\JWT;
-use Laravel\Passport\Token;
+use NeoEloquent\Passport\Token;
 use Illuminate\Http\Request;
-use Laravel\Passport\Passport;
+use NeoEloquent\Passport\Passport;
 use Illuminate\Container\Container;
-use Laravel\Passport\TransientToken;
-use Laravel\Passport\TokenRepository;
-use Laravel\Passport\ClientRepository;
+use NeoEloquent\Passport\TransientToken;
+use NeoEloquent\Passport\TokenRepository;
+use NeoEloquent\Passport\ClientRepository;
 use League\OAuth2\Server\ResourceServer;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Contracts\Encryption\Encrypter;

@@ -1,12 +1,12 @@
 <?php
 
-namespace Laravel\Passport\Http\Controllers;
+namespace NeoEloquent\Passport\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Laravel\Passport\Passport;
-use Laravel\Passport\Bridge\User;
-use Laravel\Passport\TokenRepository;
-use Laravel\Passport\ClientRepository;
+use NeoEloquent\Passport\Passport;
+use NeoEloquent\Passport\Bridge\User;
+use NeoEloquent\Passport\TokenRepository;
+use NeoEloquent\Passport\ClientRepository;
 use Illuminate\Database\Eloquent\Model;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response as Psr7Response;

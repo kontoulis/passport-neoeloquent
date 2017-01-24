@@ -1,11 +1,11 @@
 <?php
 
-namespace Laravel\Passport\Http\Controllers;
+namespace NeoEloquent\Passport\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Laravel\Passport\Client;
-use Laravel\Passport\ClientRepository;
+use NeoEloquent\Passport\Client;
+use NeoEloquent\Passport\ClientRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
 

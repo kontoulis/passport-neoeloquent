@@ -1,9 +1,9 @@
 <?php
 
-namespace Laravel\Passport\Http\Middleware;
+namespace NeoEloquent\Passport\Http\Middleware;
 
 use Illuminate\Auth\AuthenticationException;
-use Laravel\Passport\Exceptions\MissingScopeException;
+use NeoEloquent\Passport\Exceptions\MissingScopeException;
 
 class CheckForAnyScope
 {

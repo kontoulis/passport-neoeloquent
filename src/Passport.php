@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Passport;
+namespace NeoEloquent\Passport;
 
 use DateInterval;
 use Carbon\Carbon;
@@ -75,7 +75,7 @@ class Passport
     public static $keyPath;
 
     /**
-     * Indicates if Passport migrations will be run.
+     * Indicates if Passport labels will be run.
      *
      * @var bool
      */
@@ -106,7 +106,7 @@ class Passport
         };
 
         $options = array_merge([
-            'namespace' => '\Laravel\Passport\Http\Controllers',
+            'namespace' => '\NeoEloquent\Passport\Http\Controllers',
             'prefix' => 'oauth',
         ], $options);
 
@@ -295,7 +295,7 @@ class Passport
     }
 
     /**
-     * Configure Passport to not register its migrations.
+     * Configure Passport to not register its labels.
      *
      * @return static
      */

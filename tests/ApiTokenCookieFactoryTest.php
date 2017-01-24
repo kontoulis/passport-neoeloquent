@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Encryption\Encrypter;
-use Laravel\Passport\ApiTokenCookieFactory;
+use NeoEloquent\Passport\ApiTokenCookieFactory;
 
 class ApiTokenCookieFactoryTest extends PHPUnit_Framework_TestCase
 {

@@ -12,14 +12,14 @@ class AuthorizationControllerTest extends PHPUnit_Framework_TestCase
 
     public function test_authorization_view_is_presented()
     {
-        Laravel\Passport\Passport::tokensCan([
+        NeoEloquent\Passport\Passport::tokensCan([
             'scope-1' => 'description',
         ]);
 
         $server = Mockery::mock(AuthorizationServer::class);
         $response = Mockery::mock(ResponseFactory::class);
 
-        $controller = new Laravel\Passport\Http\Controllers\AuthorizationController($server, $response);
+        $controller = new NeoEloquent\Passport\Http\Controllers\AuthorizationController($server, $response);
 
         $server->shouldReceive('validateAuthorizationRequest')->andReturn($authRequest = Mockery::mock());
 
@@ -29,7 +29,7 @@ class AuthorizationControllerTest extends PHPUnit_Framework_TestCase
         $request->shouldReceive('user')->andReturn('user');
 
         $authRequest->shouldReceive('getClient->getIdentifier')->andReturn(1);
-        $authRequest->shouldReceive('getScopes')->andReturn([new Laravel\Passport\Bridge\Scope('scope-1')]);
+        $authRequest->shouldReceive('getScopes')->andReturn([new NeoEloquent\Passport\Bridge\Scope('scope-1')]);
 
         $response->shouldReceive('view')->once()->andReturnUsing(function ($view, $data) use ($authRequest) {
             $this->assertEquals('passport::authorize', $view);
@@ -40,10 +40,10 @@ class AuthorizationControllerTest extends PHPUnit_Framework_TestCase
             return 'view';
         });
 
-        $clients = Mockery::mock('Laravel\Passport\ClientRepository');
+        $clients = Mockery::mock('NeoEloquent\Passport\ClientRepository');
         $clients->shouldReceive('find')->with(1)->andReturn('client');
 
-        $tokens = Mockery::mock('Laravel\Passport\TokenRepository');
+        $tokens = Mockery::mock('NeoEloquent\Passport\TokenRepository');
         $tokens->shouldReceive('findValidToken')->with('user', 'client')->andReturnNull();
 
         $this->assertEquals('view', $controller->authorize(
@@ -56,7 +56,7 @@ class AuthorizationControllerTest extends PHPUnit_Framework_TestCase
         $server = Mockery::mock(AuthorizationServer::class);
         $response = Mockery::mock(ResponseFactory::class);
 
-        $controller = new Laravel\Passport\Http\Controllers\AuthorizationController($server, $response);
+        $controller = new NeoEloquent\Passport\Http\Controllers\AuthorizationController($server, $response);
 
         $server->shouldReceive('validateAuthorizationRequest')->andReturnUsing(function () {
             throw new Exception('whoops');
@@ -65,9 +65,9 @@ class AuthorizationControllerTest extends PHPUnit_Framework_TestCase
         $request = Mockery::mock('Illuminate\Http\Request');
         $request->shouldReceive('session')->andReturn($session = Mockery::mock());
 
-        $clients = Mockery::mock('Laravel\Passport\ClientRepository');
+        $clients = Mockery::mock('NeoEloquent\Passport\ClientRepository');
 
-        $tokens = Mockery::mock('Laravel\Passport\TokenRepository');
+        $tokens = Mockery::mock('NeoEloquent\Passport\TokenRepository');
 
         $this->assertEquals('whoops', $controller->authorize(
             Mockery::mock('Psr\Http\Message\ServerRequestInterface'), $request, $clients, $tokens
@@ -79,14 +79,14 @@ class AuthorizationControllerTest extends PHPUnit_Framework_TestCase
      */
     public function test_request_is_approved_if_valid_token_exists()
     {
-        Laravel\Passport\Passport::tokensCan([
+        NeoEloquent\Passport\Passport::tokensCan([
             'scope-1' => 'description',
         ]);
 
         $server = Mockery::mock(AuthorizationServer::class);
         $response = Mockery::mock(ResponseFactory::class);
 
-        $controller = new Laravel\Passport\Http\Controllers\AuthorizationController($server, $response);
+        $controller = new NeoEloquent\Passport\Http\Controllers\AuthorizationController($server, $response);
 
         $server->shouldReceive('validateAuthorizationRequest')->andReturn($authRequest = Mockery::mock('League\OAuth2\Server\RequestTypes\AuthorizationRequest'));
         $server->shouldReceive('completeAuthorizationRequest')->with($authRequest, Mockery::type('Psr\Http\Message\ResponseInterface'))->andReturn('approved');
@@ -97,15 +97,15 @@ class AuthorizationControllerTest extends PHPUnit_Framework_TestCase
         $request->shouldNotReceive('session');
 
         $authRequest->shouldReceive('getClient->getIdentifier')->once()->andReturn(1);
-        $authRequest->shouldReceive('getScopes')->once()->andReturn([new Laravel\Passport\Bridge\Scope('scope-1')]);
+        $authRequest->shouldReceive('getScopes')->once()->andReturn([new NeoEloquent\Passport\Bridge\Scope('scope-1')]);
         $authRequest->shouldReceive('setUser')->once()->andReturnNull();
         $authRequest->shouldReceive('setAuthorizationApproved')->once()->with(true);
 
-        $clients = Mockery::mock('Laravel\Passport\ClientRepository');
+        $clients = Mockery::mock('NeoEloquent\Passport\ClientRepository');
         $clients->shouldReceive('find')->with(1)->andReturn('client');
 
-        $tokens = Mockery::mock('Laravel\Passport\TokenRepository');
-        $tokens->shouldReceive('findValidToken')->with($user, 'client')->andReturn($token = Mockery::mock('Laravel\Passport\Token'));
+        $tokens = Mockery::mock('NeoEloquent\Passport\TokenRepository');
+        $tokens->shouldReceive('findValidToken')->with($user, 'client')->andReturn($token = Mockery::mock('NeoEloquent\Passport\Token'));
         $token->shouldReceive('getAttribute')->with('scopes')->andReturn(['scope-1']);
 
         $this->assertEquals('approved', $controller->authorize(

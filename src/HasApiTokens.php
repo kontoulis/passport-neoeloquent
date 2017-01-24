@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Passport;
+namespace NeoEloquent\Passport;
 
 use Illuminate\Container\Container;
 
@@ -9,7 +9,7 @@ trait HasApiTokens
     /**
      * The current access token for the authentication user.
      *
-     * @var \Laravel\Passport\Token
+     * @var \NeoEloquent\Passport\Token
      */
     protected $accessToken;
 
@@ -20,7 +20,7 @@ trait HasApiTokens
      */
     public function clients()
     {
-        return $this->hasMany(Client::class, 'user_id');
+        return $this->hasMany(Client::class);
     }
 
     /**
@@ -30,13 +30,13 @@ trait HasApiTokens
      */
     public function tokens()
     {
-        return $this->hasMany(Token::class, 'user_id')->orderBy('created_at', 'desc');
+        return $this->hasMany(Token::class)->orderBy('created_at', 'desc');
     }
 
     /**
      * Get the current access token being used by the user.
      *
-     * @return \Laravel\Passport\Token|null
+     * @return \NeoEloquent\Passport\Token|null
      */
     public function token()
     {
@@ -59,7 +59,7 @@ trait HasApiTokens
      *
      * @param  string  $name
      * @param  array  $scopes
-     * @return \Laravel\Passport\PersonalAccessTokenResult
+     * @return \NeoEloquent\Passport\PersonalAccessTokenResult
      */
     public function createToken($name, array $scopes = [])
     {
@@ -71,7 +71,7 @@ trait HasApiTokens
     /**
      * Set the current access token for the user.
      *
-     * @param  \Laravel\Passport\Token  $accessToken
+     * @param  \NeoEloquent\Passport\Token  $accessToken
      * @return $this
      */
     public function withAccessToken($accessToken)

@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Passport;
+namespace NeoEloquent\Passport;
 
 use Zend\Diactoros\Response;
 use Zend\Diactoros\ServerRequest;

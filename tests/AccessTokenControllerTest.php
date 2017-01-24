@@ -13,7 +13,7 @@ class AccessTokenControllerTest extends PHPUnit_Framework_TestCase
     public function test_a_token_can_be_issued()
     {
         $server = Mockery::mock('League\OAuth2\Server\AuthorizationServer');
-        $tokens = Mockery::mock(Laravel\Passport\TokenRepository::class);
+        $tokens = Mockery::mock(NeoEloquent\Passport\TokenRepository::class);
 
         $server->shouldReceive('respondToAccessTokenRequest')->with(
             Mockery::type('Psr\Http\Message\ServerRequestInterface'), Mockery::type('Psr\Http\Message\ResponseInterface')
@@ -25,7 +25,7 @@ class AccessTokenControllerTest extends PHPUnit_Framework_TestCase
         // $tokens->shouldReceive('find')->once()->with('token-id')->andReturn(new AccessTokenControllerTestStubToken);
         // $tokens->shouldReceive('revokeOtherAccessTokens')->once()->with(1, 2, 'token-id', false);
 
-        $controller = new Laravel\Passport\Http\Controllers\AccessTokenController($server, $tokens, $jwt);
+        $controller = new NeoEloquent\Passport\Http\Controllers\AccessTokenController($server, $tokens, $jwt);
 
         $this->assertEquals($response, $controller->issueToken(Mockery::mock('Psr\Http\Message\ServerRequestInterface')));
     }
@@ -37,7 +37,7 @@ class AccessTokenControllerTest extends PHPUnit_Framework_TestCase
         $container->instance(ExceptionHandler::class, $exceptions = Mockery::mock());
         $exceptions->shouldReceive('report')->once();
 
-        $tokens = Mockery::mock(Laravel\Passport\TokenRepository::class);
+        $tokens = Mockery::mock(NeoEloquent\Passport\TokenRepository::class);
         $jwt = Mockery::mock(Lcobucci\JWT\Parser::class);
 
         $server = Mockery::mock('League\OAuth2\Server\AuthorizationServer');
@@ -45,7 +45,7 @@ class AccessTokenControllerTest extends PHPUnit_Framework_TestCase
             Mockery::type('Psr\Http\Message\ServerRequestInterface'), Mockery::type('Psr\Http\Message\ResponseInterface')
         )->andReturnUsing(function () { throw new Exception('whoops'); });
 
-        $controller = new Laravel\Passport\Http\Controllers\AccessTokenController($server, $tokens, $jwt);
+        $controller = new NeoEloquent\Passport\Http\Controllers\AccessTokenController($server, $tokens, $jwt);
 
         $this->assertEquals('whoops', $controller->issueToken(Mockery::mock('Psr\Http\Message\ServerRequestInterface'))->getOriginalContent());
     }

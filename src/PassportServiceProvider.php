@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Passport;
+namespace NeoEloquent\Passport;
 
 use DateInterval;
 use Illuminate\Auth\RequestGuard;
@@ -9,16 +9,16 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Request;
-use Laravel\Passport\Guards\TokenGuard;
+use NeoEloquent\Passport\Guards\TokenGuard;
 use Illuminate\Support\ServiceProvider;
 use League\OAuth2\Server\ResourceServer;
 use League\OAuth2\Server\AuthorizationServer;
 use League\OAuth2\Server\Grant\AuthCodeGrant;
 use League\OAuth2\Server\Grant\ImplicitGrant;
 use League\OAuth2\Server\Grant\PasswordGrant;
-use Laravel\Passport\Bridge\PersonalAccessGrant;
+use NeoEloquent\Passport\Bridge\PersonalAccessGrant;
 use League\OAuth2\Server\Grant\RefreshTokenGrant;
-use Laravel\Passport\Bridge\RefreshTokenRepository;
+use NeoEloquent\Passport\Bridge\RefreshTokenRepository;
 use League\OAuth2\Server\Grant\ClientCredentialsGrant;
 
 class PassportServiceProvider extends ServiceProvider
@@ -61,12 +61,12 @@ class PassportServiceProvider extends ServiceProvider
     protected function registerMigrations()
     {
         if (Passport::$runsMigrations) {
-            return $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+            return $this->loadMigrationsFrom(__DIR__ . '/../database/labels');
         }
 
         $this->publishes([
-            __DIR__.'/../database/migrations' => database_path('migrations'),
-        ], 'passport-migrations');
+            __DIR__ . '/../database/labels' => database_path('labels'),
+        ], 'passport-labels');
     }
 
     /**

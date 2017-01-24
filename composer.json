@@ -1,17 +1,24 @@
 {
-    "name": "laravel/passport",
-    "description": "Laravel Passport provides OAuth2 server support to Laravel.",
+    "name": "laravel/passport-neoeloquent",
+    "description": "Laravel Passport provides OAuth2 server support to Laravel with neoeloquent. Original package laravel/passport by Taylor Otwell",
     "keywords": ["laravel", "passport", "oauth"],
     "license": "MIT",
     "authors": [
         {
-            "name": "Taylor Otwell",
-            "email": "taylor@laravel.com"
+            "name": "Dimitris KOntoulis",
+            "email": "kontoulisdhm@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/kontoulis/NeoEloquent.git"
         }
     ],
     "require": {
         "php": ">=5.6.4",
         "firebase/php-jwt": "~3.0|~4.0",
+        "vinelab/neoeloquent": "dev-1.5-dev",
         "guzzlehttp/guzzle": "~6.0",
         "illuminate/auth": "~5.3",
         "illuminate/console": "~5.3",
@@ -32,7 +39,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Laravel\\Passport\\": "src/"
+            "NeoEloquevt\\Passport\\": "src/"
         }
     },
     "extra": {

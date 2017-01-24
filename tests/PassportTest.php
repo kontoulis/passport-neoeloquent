@@ -1,6 +1,6 @@
 <?php
 
-use Laravel\Passport\Passport;
+use NeoEloquent\Passport\Passport;
 
 class PassportTest extends PHPUnit_Framework_TestCase
 {

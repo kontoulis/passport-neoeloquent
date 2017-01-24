@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-use Laravel\Passport\Client;
+use NeoEloquent\Passport\Client;
 
 class AuthorizedAccessTokenControllerTest extends PHPUnit_Framework_TestCase
 {
@@ -14,8 +14,8 @@ class AuthorizedAccessTokenControllerTest extends PHPUnit_Framework_TestCase
     {
         $request = Request::create('/', 'GET');
 
-        $token1 = new Laravel\Passport\Token;
-        $token2 = new Laravel\Passport\Token;
+        $token1 = new NeoEloquent\Passport\Token;
+        $token2 = new NeoEloquent\Passport\Token;
 
         $request->setUserResolver(function () use ($token1, $token2) {
             $user = Mockery::mock();
@@ -34,7 +34,7 @@ class AuthorizedAccessTokenControllerTest extends PHPUnit_Framework_TestCase
             return $user;
         });
 
-        $controller = new Laravel\Passport\Http\Controllers\AuthorizedAccessTokenController;
+        $controller = new NeoEloquent\Passport\Http\Controllers\AuthorizedAccessTokenController;
 
         $this->assertEquals(1, count($controller->forUser($request)));
         $this->assertEquals($token2, $controller->forUser($request)[0]);
@@ -44,10 +44,10 @@ class AuthorizedAccessTokenControllerTest extends PHPUnit_Framework_TestCase
     {
         $request = Request::create('/', 'GET');
 
-        $token1 = Mockery::mock(Laravel\Passport\Token::class.'[revoke]');
+        $token1 = Mockery::mock(NeoEloquent\Passport\Token::class.'[revoke]');
         $token1->id = 1;
         $token1->shouldReceive('revoke')->once();
-        $token2 = Mockery::mock(Laravel\Passport\Token::class.'[revoke]');
+        $token2 = Mockery::mock(NeoEloquent\Passport\Token::class.'[revoke]');
         $token2->id = 2;
         $token2->shouldReceive('revoke')->never();
 
@@ -60,7 +60,7 @@ class AuthorizedAccessTokenControllerTest extends PHPUnit_Framework_TestCase
         });
 
         $validator = Mockery::mock('Illuminate\Contracts\Validation\Factory');
-        $controller = new Laravel\Passport\Http\Controllers\AuthorizedAccessTokenController($validator);
+        $controller = new NeoEloquent\Passport\Http\Controllers\AuthorizedAccessTokenController($validator);
 
         $controller->destroy($request, 1);
     }
@@ -69,10 +69,10 @@ class AuthorizedAccessTokenControllerTest extends PHPUnit_Framework_TestCase
     {
         $request = Request::create('/', 'GET');
 
-        $token1 = Mockery::mock(Laravel\Passport\Token::class.'[revoke]');
+        $token1 = Mockery::mock(NeoEloquent\Passport\Token::class.'[revoke]');
         $token1->id = 1;
         $token1->shouldReceive('revoke')->never();
-        $token2 = Mockery::mock(Laravel\Passport\Token::class.'[revoke]');
+        $token2 = Mockery::mock(NeoEloquent\Passport\Token::class.'[revoke]');
         $token2->id = 2;
         $token2->shouldReceive('revoke')->never();
 
@@ -85,7 +85,7 @@ class AuthorizedAccessTokenControllerTest extends PHPUnit_Framework_TestCase
         });
 
         $validator = Mockery::mock('Illuminate\Contracts\Validation\Factory');
-        $controller = new Laravel\Passport\Http\Controllers\AuthorizedAccessTokenController($validator);
+        $controller = new NeoEloquent\Passport\Http\Controllers\AuthorizedAccessTokenController($validator);
 
         $this->assertEquals(404, $controller->destroy($request, 3)->status());
     }

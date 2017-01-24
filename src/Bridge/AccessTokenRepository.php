@@ -1,11 +1,11 @@
 <?php
 
-namespace Laravel\Passport\Bridge;
+namespace NeoEloquent\Passport\Bridge;
 
 use DateTime;
 use Illuminate\Database\Connection;
 use Illuminate\Contracts\Events\Dispatcher;
-use Laravel\Passport\Events\AccessTokenCreated;
+use NeoEloquent\Passport\Events\AccessTokenCreated;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Entities\AccessTokenEntityInterface;
 use League\OAuth2\Server\Repositories\AccessTokenRepositoryInterface;

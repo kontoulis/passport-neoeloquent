@@ -1,8 +1,8 @@
 <?php
 
-namespace Laravel\Passport\Http\Controllers;
+namespace NeoEloquent\Passport\Http\Controllers;
 
-use Laravel\Passport\Passport;
+use NeoEloquent\Passport\Passport;
 
 class ScopeController
 {

@@ -1,6 +1,6 @@
 <?php
 
-use Laravel\Passport\Http\Middleware\CheckClientCredentials;
+use NeoEloquent\Passport\Http\Middleware\CheckClientCredentials;
 use Illuminate\Http\Request;
 
 class CheckClientCredentialsTest extends PHPUnit_Framework_TestCase

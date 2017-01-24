@@ -1,12 +1,12 @@
 <?php
 
-namespace Laravel\Passport\Console;
+namespace NeoEloquent\Passport\Console;
 
 use DateTime;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
-use Laravel\Passport\ClientRepository;
-use Laravel\Passport\PersonalAccessClient;
+use NeoEloquent\Passport\ClientRepository;
+use NeoEloquent\Passport\PersonalAccessClient;
 
 class ClientCommand extends Command
 {
@@ -30,7 +30,7 @@ class ClientCommand extends Command
     /**
      * Execute the console command.
      *
-     * @param  \Laravel\Passport\ClientRepository  $clients
+     * @param  \NeoEloquent\Passport\ClientRepository  $clients
      * @return void
      */
     public function handle(ClientRepository $clients)
@@ -49,7 +49,7 @@ class ClientCommand extends Command
     /**
      * Create a new personal access client.
      *
-     * @param  \Laravel\Passport\ClientRepository  $clients
+     * @param  \NeoEloquent\Passport\ClientRepository  $clients
      * @return void
      */
     protected function createPersonalClient(ClientRepository $clients)
@@ -75,7 +75,7 @@ class ClientCommand extends Command
     /**
      * Create a new password grant client.
      *
-     * @param  \Laravel\Passport\ClientRepository  $clients
+     * @param  \NeoEloquent\Passport\ClientRepository  $clients
      * @return void
      */
     protected function createPasswordClient(ClientRepository $clients)
@@ -97,7 +97,7 @@ class ClientCommand extends Command
     /**
      * Create a authorization code client.
      *
-     * @param  \Laravel\Passport\ClientRepository  $clients
+     * @param  \NeoEloquent\Passport\ClientRepository  $clients
      * @return void
      */
     protected function createAuthCodeClient(ClientRepository $clients)

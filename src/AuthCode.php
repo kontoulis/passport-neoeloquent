@@ -1,8 +1,8 @@
 <?php
 
-namespace Laravel\Passport;
+namespace NeoEloquent\Passport;
 
-use Illuminate\Database\Eloquent\Model;
+use Vinelab\NeoEloquent\Eloquent\Model;
 
 class AuthCode extends Model
 {
@@ -13,6 +13,7 @@ class AuthCode extends Model
      */
     protected $table = 'oauth_auth_codes';
 
+    protected $primaryKey = 'uuid';
     /**
      * The guarded attributes on the model.
      *
@@ -41,7 +42,7 @@ class AuthCode extends Model
     /**
      * Get the client that owns the authentication code.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Vinelab\NeoEloquent\Eloquent\Relations\HasMany
      */
     public function client()
     {

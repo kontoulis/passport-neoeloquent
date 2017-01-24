@@ -1,8 +1,8 @@
 <?php
 
-namespace Laravel\Passport;
+namespace NeoEloquent\Passport;
 
-use Illuminate\Database\Eloquent\Model;
+use Vinelab\NeoEloquent\Eloquent\Model;
 
 class PersonalAccessClient extends Model
 {

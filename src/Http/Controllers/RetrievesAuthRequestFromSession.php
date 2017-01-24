@@ -1,11 +1,11 @@
 <?php
 
-namespace Laravel\Passport\Http\Controllers;
+namespace NeoEloquent\Passport\Http\Controllers;
 
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Laravel\Passport\Bridge\User;
+use NeoEloquent\Passport\Bridge\User;
 
 trait RetrievesAuthRequestFromSession
 {
